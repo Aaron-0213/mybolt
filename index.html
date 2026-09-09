@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DealScout — Find deals worth buying</title>
+<meta name="description" content="A simple deal discovery site with affiliate-ready product links.">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#f7f7f2;color:#171717}header{padding:24px 7%;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;font-size:24px}.tag{font-size:13px;color:#666}.hero{padding:70px 7% 40px;max-width:1050px}.pill{display:inline-block;background:#171717;color:#fff;border-radius:99px;padding:7px 12px;font-size:12px;font-weight:700}.hero h1{font-size:clamp(44px,7vw,82px);line-height:.95;letter-spacing:-4px;margin:18px 0}.hero p{font-size:19px;color:#5c5c5c;max-width:650px;line-height:1.5}.search{display:flex;gap:10px;max-width:650px;margin-top:28px}.search input{flex:1;padding:17px;border:1px solid #ddd;border-radius:14px;font-size:16px}.search button,.buy{border:0;background:#171717;color:#fff;border-radius:14px;padding:0 22px;font-weight:800;cursor:pointer}.wrap{padding:30px 7% 80px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.card{background:#fff;border:1px solid #e7e7e0;border-radius:22px;padding:22px;box-shadow:0 8px 30px #00000008}.icon{font-size:48px;background:#f1f1eb;border-radius:16px;padding:18px;text-align:center}.card h3{margin:18px 0 7px}.price{font-size:24px;font-weight:900}.meta{color:#777;font-size:13px;margin:7px 0 18px}.buy{display:block;text-align:center;padding:13px;text-decoration:none}.note{text-align:center;color:#777;font-size:12px;margin-top:28px}footer{padding:25px 7%;border-top:1px solid #ddd;color:#777;font-size:13px}
+</style></head><body>
+<header><div class="logo">DealScout</div><div class="tag">Smart finds. Better prices.</div></header>
+<section class="hero"><span class="pill">DEAL DISCOVERY</span><h1>Find things worth buying.</h1><p>Browse hand-picked everyday products and jump straight to the best place to buy them. Built for simple, useful recommendations.</p><div class="search"><input id="q" placeholder="Search headphones, desk gear, travel..." oninput="filter()"><button onclick="filter()">Search</button></div></section>
+<section class="wrap"><div class="grid" id="grid"></div><div class="note">Disclosure: some links may be affiliate links. If you buy through them, this site may earn a commission at no extra cost to you.</div></section>
+<footer>© 2026 DealScout · Independent product discovery</footer>
+<script>
+const products=[
+['🎧','Wireless Headphones','Comfortable everyday listening','From $39','Amazon'],
+['⌨️','Compact Mechanical Keyboard','A better desk setup','From $49','Amazon'],
+['🎒','Minimal Travel Backpack','Carry-on friendly and practical','From $45','Amazon'],
+['💡','Smart Desk Lamp','Clean lighting for work','From $29','Amazon'],
+['🖱️','Ergonomic Mouse','Less strain, more control','From $25','Amazon'],
+['🔋','Portable Power Bank','Backup power on the go','From $22','Amazon']];
+function render(items=products){grid.innerHTML=items.map(p=>`<article class="card"><div class="icon">${p[0]}</div><h3>${p[1]}</h3><div class="meta">${p[2]}</div><div class="price">${p[3]}</div><div class="meta">${p[4]}</div><a class="buy" href="https://www.amazon.com/" target="_blank" rel="nofollow sponsored noopener">Check price →</a></article>`).join('')}
+function filter(){let q=document.getElementById('q').value.toLowerCase();render(products.filter(p=>p.join(' ').toLowerCase().includes(q)))}render();
+</script></body></html>
